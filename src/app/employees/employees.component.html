@@ -1,0 +1,52 @@
+<menu></menu>
+<h2>Employees</h2>
+<div class="row">
+  <div class="col-md-4">
+      <label>Username</label><br>
+      <input type="text" name="name" [(ngModel)] ="employee.name"><br>
+      <label>Phone</label><br>
+      <input type="text" name="phone" [(ngModel)]="employee.phone"><br>
+      <label>Email</label><br>
+      <input type="text" name="email" [(ngModel)]="employee.email"><br>
+      <label>Address</label><br>
+      <input type="text" name="address" [(ngModel)]="employee.address"><br><br>
+      <button (click)="addEmployee()">Add Employee</button><br><br>
+      <input type="text" name="id" [(ngModel)]="employee.id"><br><br>
+      <button (click)="removeEmployee(employee.id)">Delete Employee</button>
+  </div>
+  <div class="col-md-4">
+      <ul class="employees" style="display: -webkit-box;" *ngFor="let employee of employees" [class.selected]="employee === selectedemployee"
+      (click)="onSelect(employee)">
+          <li>{{employee.id}}</li>
+          <li>{{employee.name}}</li>
+          <li>{{employee.phone}}</li>
+          <li>{{employee.email}}</li>
+          <li>{{employee.address}}</li> 
+          <li (click)="removeEmployee(employee.id)">x</li>         
+        </ul>
+  </div>
+  <div class="col-md-4">
+      <div *ngIf="selectedEmployee">
+          <h2>{{selectedEmployee.name | uppercase}} Details</h2>
+          <div><span>id: </span>{{selectedEmployee.id}}</div>
+          <div>
+            <label>Name:
+              <input [(ngModel)]="selectedEmployee.name" placeholder="name">
+            </label>
+            <label>Email:
+              <input [(ngModel)]="selectedEmployee.email">
+            </label>
+            <label>Phone:
+                <input [(ngModel)]="selectedEmployee.phone">
+            </label>
+            <label>Address:
+                <input [(ngModel)]="selectedEmployee.address">
+            </label>
+          </div>
+        
+        </div>
+  </div>
+</div>
+
+
+
